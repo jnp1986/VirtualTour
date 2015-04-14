@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- MAP -->
+        <style type="text/css">
+            html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+        </style>
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg3suBVsTjew0sCBoqHHBF2cy2UOI4dYk">
+        </script>
+
+        <script type="text/javascript">
+
+            function CenterControl(controlDiv, map) {
+
+                // Set CSS for the control border
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#ff0000';
+                controlUI.style.border = '2px solid #797980';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '22px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Click to recenter the map';
+                controlDiv.appendChild(controlUI);
+
+                // Set CSS for the control interior
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(255,255,255)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = '16px';
+                controlText.style.lineHeight = '38px';
+                controlText.style.paddingLeft = '5px';
+                controlText.style.paddingRight = '5px';
+                controlText.innerHTML = 'Recreation';
+                controlUI.appendChild(controlText);
+
+                // Setup the click event listeners: simply set the map to
+                // Chicago
+                google.maps.event.addDomListener(controlUI, 'click', function () {
+                    hartmanM.setMap(map);
+                    gothicM.setMap(map);
+                    cbmrM.setMap(map);
+                    cbArtsM.setMap(null);
+                    westernM.setMap(null);
+                    Pstop.setMap(null);
+                });
+
+            }
+            function CenterControl2(controlDiv, map) {
+
+                // Set CSS for the control border
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#ff0000';
+                controlUI.style.border = '2px solid #797980';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '22px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Click to recenter the map';
+                controlDiv.appendChild(controlUI);
+
+                // Set CSS for the control interior
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(255,255,255)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = '16px';
+                controlText.style.lineHeight = '38px';
+                controlText.style.paddingLeft = '5px';
+                controlText.style.paddingRight = '5px';
+                controlText.innerHTML = 'Culture';
+                controlUI.appendChild(controlText);
+
+                // Setup the click event listeners: simply set the map to
+                // Chicago
+                google.maps.event.addDomListener(controlUI, 'click', function () {
+                    cbArtsM.setMap(map);
+                    westernM.setMap(map);
+                    hartmanM.setMap(null);
+                    gothicM.setMap(null);
+                    cbmrM.setMap(null);
+                    Pstop.setMap(null);
+                });
+
+            }
+            function CenterControl3(controlDiv, map) {
+
+                // Set CSS for the control border
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#ff0000';
+                controlUI.style.border = '2px solid #797980';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '22px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Click to recenter the map';
+                controlDiv.appendChild(controlUI);
+
+                // Set CSS for the control interior
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(255,255,255)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = '16px';
+                controlText.style.lineHeight = '38px';
+                controlText.style.paddingLeft = '5px';
+                controlText.style.paddingRight = '5px';
+                controlText.innerHTML = 'Food';
+                controlUI.appendChild(controlText);
+
+
+                google.maps.event.addDomListener(controlUI, 'click', function () {
+                    Pstop.setMap(map);
+                    cbArtsM.setMap(null);
+                    westernM.setMap(null);
+                    hartmanM.setMap(null);
+                    gothicM.setMap(null);
+                    cbmrM.setMap(null);
+
+                });
+
+            }
+
+            var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h1 id="firstHeading" class="firstHeading">Western State Colorado University</h1>' +
+                    '<div id="bodyContent">' +
+                    '<p><img src="pic.jpg"><b>Western</b>, also referred to as <b>WSCU</b>, is a large ' +
+                    'sandstone rock formation in the southern part of the ' +
+                    'Gunnison county, central Colorado. It lies 400 miles ' +
+                    'south west of the nearest large town, Denver.; ' +
+                    ' Kata Tjuta and Uluru are the two major ' +
+                    'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
+                    'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
+                    'Aboriginal people of the area. It has many springs, waterholes, ' +
+                    'rock caves and ancient paintings. Uluru is listed as a World ' +
+                    'Heritage Site.</p>' +
+                    '<p>Attribution: Uluru, <a href="western.edu">' +
+                    'https://western.edu</a> ' +
+                    '(last visited June 22, 2009).</p>' +
+                    '</div>' +
+                    '</div>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            //gunny markers
+
+
+            var westernM = new google.maps.Marker({
+                position: new google.maps.LatLng(38.547, -106.918),
+                title: "Western",
+                icon: 'W.jpg',
+                type: 'Cul'
+            });
+            var hartmanM = new google.maps.Marker({
+                position: new google.maps.LatLng(38.505, -106.9501),
+                title: "Western",
+                icon: 'blm.jpg',
+                type: 'Rec'
+            });
+            var Pstop = new google.maps.Marker({
+                position: new google.maps.LatLng(38.547, -106.928),
+                title: "PowerStop",
+                icon: 'powerstop.jpg',
+                type: 'Food'
+            });
+            //CB markers
+            var cbmrM = new google.maps.Marker({
+                position: new google.maps.LatLng(38.9, -106.95),
+                icon: 'cbmr.jpg',
+                title: "CBMR"
+            });
+            var cbArtsM = new google.maps.Marker({
+                position: new google.maps.LatLng(38.8677, -106.9773),
+                icon: 'cbart.jpg',
+                title: "CB Art Center"
+            });
+            var gothicM = new google.maps.Marker({
+                position: new google.maps.LatLng(38.9592, -106.9898),
+                icon: 'fs.jpg',
+                title: "RMBL"
+            });
+
+            // To add the marker to the map, call setMap();
+
+            // First, create an object containing LatLng and population for each city.
+            var citymap = {};
+            citymap['gunnison'] = {
+                center: new google.maps.LatLng(38.547, -106.918),
+                population: 10000
+            };
+            citymap['cb'] = {
+                center: new google.maps.LatLng(38.8677, -106.9773),
+                population: 3000
+            };
+            var cityCircle;
+
+
+            function initialize() {
+                // Create the map.
+                var myLatlng = new google.maps.LatLng(38.547, -106.918);
+                var mapOptions = {
+                    zoom: 4,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.HYBRID
+
+                };
+
+
+                function smoothZoom(map, max, cnt) {
+                    if (cnt >= max) {
+                        return;
+                    }
+                    else {
+                        z = google.maps.event.addListener(map, 'zoom_changed', function (event) {
+                            google.maps.event.removeListener(z);
+                            smoothZoom(map, max, cnt + 1);
+
+                        });
+                        setTimeout(function () {
+                            map.setZoom(cnt);
+                        }, 300); // 80ms is what I found to work well on my system -- it might not work well on all systems
+                    }
+                }
+
+
+
+
+
+                var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                smoothZoom(map, 10, map.getZoom());
+
+                var centerControlDiv = document.createElement('div');
+                var centerControl = new CenterControl(centerControlDiv, map);
+                centerControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+
+
+                var centerControl2 = new CenterControl2(centerControlDiv, map);
+                centerControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+
+
+
+                var centerControl3 = new CenterControl3(centerControlDiv, map);
+                centerControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+                var gunnyC = {
+                    strokeColor: 'rgb(255,255,255)',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.30,
+                    map: map,
+                    center: citymap['gunnison'].center,
+                    radius: Math.sqrt(citymap['gunnison'].population) * 100
+                };
+                var cbC = {
+                    strokeColor: 'rgb(255,255,255)',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.30,
+                    map: map,
+                    center: citymap['cb'].center,
+                    radius: Math.sqrt(citymap['cb'].population) * 100
+                };
+
+
+                cityCircle1 = new google.maps.Circle(gunnyC);
+                cityCircle2 = new google.maps.Circle(cbC);
+
+                //}
+//                google.maps.event.addListener(map, 'center_changed', function () {
+//                    // 3 seconds after the center of the map has changed, pan back to the
+//                    // marker.
+//                    window.setTimeout(function () {
+//                        map.panTo(citymap['gunnison'].center);
+//                    }, 3000);
+//                });
+
+                google.maps.event.addListener(cityCircle1, 'click', function () {
+
+                    smoothZoom(map, 14, map.getZoom());
+                    map.panTo(citymap['gunnison'].center);
+
+                    westernM.setMap(map);
+                    hartmanM.setMap(map);
+                    Pstop.setMap(map);
+                    cityCircle2.setMap(map);
+                    cbmrM.setMap(null);
+                    gothicM.setMap(null);
+                    cityCircle1.setMap(null);
+                    cbArtsM.setMap(null);
+
+                });
+                google.maps.event.addListener(cityCircle2, 'click', function () {
+                    smoothZoom(map, 14, map.getZoom());
+
+                    map.panTo(citymap['cb'].center);
+                    westernM.setMap(null);
+                    hartmanM.setMap(null);
+                    Pstop.setMap(null);
+
+                    cityCircle2.setMap(null);
+                    cityCircle1.setMap(map);
+                    cbmrM.setMap(map);
+                    cbArtsM.setMap(map);
+                    gothicM.setMap(map);
+                });
+                google.maps.event.addListener(westernM, 'click', function () {
+                    infowindow.open(map, westernM);
+                });
+            }
+//close intialize
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    </head>
+    <body>
+        <!-- MAP-->
+        <div id="map-canvas" style="width:400px;height:600px;float:right;"> </div>
+        <!-- END MAP-->
+    </body>
+</html>

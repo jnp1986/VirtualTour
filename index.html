@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>index</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+        <!-- CONTEXTUAL MENU!-->
+        <link rel="stylesheet" href="css/contextualNavCSS/hotspot-map.min.css" type="text/css"/>
+        <link type="text/css" rel="stylesheet" href="css/contextualNavCSS/cnstyle.css">
+
+
+
+        <!-- include jQuery library -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+        <script src="js/contextualNavJS/lib/jquery.min.js"></script>
+        <script src="js/contextualNavJS/hotspot-map.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                if (location.hash !== "") {
+                    $("#start").removeClass("show");
+                }
+
+                $(".hotspot-92").hotspot({"show_on": "mouseover", "responsive": true});
+
+                $("#start").find("a").on("click", function () {
+                    $("#start").removeClass("show");
+                    $(this).off("click");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <!--BEGIN CAROUSEL -->
+
+
+
+        <!-- BEGIN BACKGROUND CONTEXTUAL MENU !-->
+        <!-- ISSUE: Content width doesn't appear to be responsive in Firefox
+        TODO:Make arrow images change size when screen is resized-->
+        <div class="pics">
+            <section class="show" id="start">
+                <a href ="#beginning">
+                    <button class="beginButton">Begin Tour</button>
+                </a>
+            </section> 
+            <section id="beginning">
+                <div class="menu">
+                    <iframe src="menu.html" scrolling="no" frameBorder="0"></iframe>
+                </div>
+                <div class="map">
+                    <iframe src="map.html" scrolling="no" frameBorder="0"></iframe>
+                </div>
+                <div class="carousel">
+                    <iframe src="carousel.html" scrolling="no" frameBorder="0" width="1000" height="200"></iframe>
+                </div>
+                <img class="background_image" src="images/contextualNavImgs/1366_80_front-3.jpg" />
+                <a href="#taylor">
+                    <img id="connectionRight_img" class="right_arrow" src="images/contextualNavImgs/turnRight.png"
+                         onmouseover="this.src = 'images/contextualNavImgs/turnRight_Hover.png'"
+                         onmouseout="this.src = 'images/contextualNavImgs/turnRight.png'" alt="Turn Right"/>
+                </a>
+            </section>​
+            <section id="taylor">
+                <div class="menu">
+                    <iframe src="menu.html" scrolling="no" frameBorder="0"></iframe>
+                </div>
+                <div class="map">
+                    <iframe src="map.html" scrolling="no" frameBorder="0"></iframe>
+                </div>
+                <div class="carousel">
+                    <iframe src="carousel.html" scrolling="no" frameBorder="0" width="1000" height="200"></iframe>
+                </div>
+                <div class="hotspot-92 hs-wrap hs-loading">
+                    <img src = "images/contextualNavImgs/1366_front.jpg" class = "panorama mypanorama" width = "2642" height = "375" />
+                    <div class="hs-spot-object" data-tint-color="#e52929" data-type="spot" data-x="20" data-y="20" data-width="30" data-height="30"
+                         data-popup-position="right" data-visible="visible" data-tooltip-width="100" data-tooltip-auto-width="true">
+                        Check out this video on Western
+                        <iframe width="300" height="200" src="https://www.youtube.com/embed/QaWu3cCH1bo" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="hs-spot-object" data-tint-color="#e52929" data-type="spot" data-x="70" data-y="30" data-width="15" data-height="30"
+                         data-popup-position="bottom" data-visible="visible" data-tooltip-width="100" data-tooltip-auto-width="false">
+                        Taylor Hall
+                    </div>
+                </div>
+                <a href="#pathway">
+                    <img class="forward_arrow" src="images/contextualNavImgs/forward_big.png"
+                         onmouseover="this.src = 'images/contextualNavImgs/forward_big_Hover.png'"
+                         onmouseout="this.src = 'images/contextualNavImgs/forward_big.png'" alt="Walk Forward"/>
+                </a>
+                <a href="#beginning">
+                    <img class="back_left_arrow" src="images/contextualNavImgs/back_turnLeft.png"
+                         onmouseover="this.src = 'images/contextualNavImgs/back_turnLeft_Hover.png'"
+                         onmouseout="this.src = 'images/contextualNavImgs/back_turnLeft.png'" alt="Turn Back Left"/>
+                </a>
+            </section>
+            <section id="pathway">
+                <div class="menu">
+                    <iframe src="menu.html" scrolling="no" frameBorder="0"></iframe>
+                </div>
+                <div class="map">
+                    <iframe src="map.html" scrolling="no" frameBorder="0"></iframe>
+                </div>
+                <div class="carousel">
+                    <iframe src="carousel.html" scrolling="no" frameBorder="0" width="1000" height="200"></iframe>
+                </div>
+                <div class="hotspot-92 hs-wrap hs-loading">
+                    <img src ="images/contextualNavImgs/1366_80_front-7.jpg" />
+                    <div class="hs-spot-object" data-tint-color="#e52929" data-type="rect" data-x="70" data-y="30" data-width="8" data-height="8"
+                         data-popup-position="left" data-visible="visible" data-tooltip-width="100" data-tooltip-auto-width="false">
+                        Some trees
+                    </div>
+                </div>
+                <a href="#hurst">
+                    <img class="forward_arrow" src="images/contextualNavImgs/forward_big.png"
+                         onmouseover="this.src = 'images/contextualNavImgs/forward_big_Hover.png'"
+                         onmouseout="this.src = 'images/contextualNavImgs/forward_big.png'" alt="Walk Forward"/>
+                </a>
+                <a href="#taylor">
+                    <img class="back_arrow" src="images/contextualNavImgs/back.png"
+                         onmouseover="this.src = 'images/contextualNavImgs/back_Hover.png'"
+                         onmouseout="this.src = 'images/contextualNavImgs/back.png'" alt="Walk Back"/>
+                </a>
+            </section>
+            <section id="hurst">
+                <div class="menu">
+                    <iframe src="menu.html" scrolling="no" frameBorder="0"></iframe>
+                </div>
+                <div class="map">
+                    <iframe src="map.html" scrolling="no" frameBorder="0"></iframe>
+                </div>
+                <div class="carousel">
+                    <iframe src="carousel.html" scrolling="no" frameBorder="0" width="1000" height="200"></iframe>
+                </div>
+                <div class="hotspot-92 hs-wrap hs-loading">
+                    <img src="images/contextualNavImgs/1366_80_front-11.jpg" />
+                    <div class="hs-spot-object" data-tint-color="#e52929" data-type="spot" data-x="50" data-y="34.66666666666667"
+                         data-width="30" data-height="30" data-popup-position="bottom" data-visible="visible" data-tooltip-width="200" data-tooltip-auto-width="false">
+                        This is Hurst, the building above all buildings. Check out the super cool things about it. So much Hurst. 
+                    </div>
+                </div>
+                <a href="#pathway">
+                    <img class="back_arrow" src="images/contextualNavImgs/back.png"
+                         onmouseover="this.src = 'images/contextualNavImgs/back_Hover.png'"
+                         onmouseout="this.src = 'images/contextualNavImgs/back.png'" alt="Walk Back"/>
+                </a>
+            </section>
+            <!-- END CONTEXTUAL MENU WITH DIV !-->
+        </div>
+    </body>
+</html>

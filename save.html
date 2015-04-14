@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>index</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+        <!-- CONTEXTUAL MENU!-->
+        <link rel="stylesheet" href="css/contextualNavCSS/hotspot-map.min.css" type="text/css"/>
+        <link type="text/css" rel="stylesheet" href="css/contextualNavCSS/cnstyle.css">
+
+        <!-- LOOK HERE To ENSURE CORRECTNESS !-->
+        <link rel = "stylesheet" type = "text/css" href = "css/jquery.panorama.css"/>
+
+
+        <!-- include jQuery library -->
+
+        <!-- ERROR HERE ALSO!-->
+        <script type = "text/javascript" src = "js/jquery.js" ></script>
+
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+        <script src="js/contextualNavJS/lib/jquery.min.js"></script>
+        <script src="js/contextualNavJS/hotspot-map.min.js"></script>
+
+        <!--    ANOTHER PANERAMA REFERENCE? !-->
+        <script type = "text/javascript" src ="js/jquery.panorama.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                if (location.hash !== "") {
+                    $("#start").removeClass("show");
+                }
+
+                $(".hotspot-92").hotspot({"show_on": "mouseover", "responsive": true});
+
+                $("#start").find("a").on("click", function () {
+                    $("#start").removeClass("show");
+                    $(this).off("click");
+                });
+
+                /*  SOMETHIN IS WEIRD HERE      */
+                $("img.mypanorama").panorama({
+                    "viewport_width": 500,
+                    "speed": 30000,
+                    "Officer": "right",
+                    "control_display": "yes"
+                });
+
+            });
+        </script>
+
+
+
+        <!-- NAV LIST MENU !-->
+        <link rel="stylesheet" href="css/font-awesome-4.3.0/css/font-awesome.css" />
+        <!-- <link href="css/menuListNavCSS/dcdrilldown.css" rel="stylesheet" type="text/css" /> !-->
+        <link href="css/menuListNavCSS/skins/graphite.css" rel="stylesheet" type="text/css" />
+        <link href="css/menuListNavCSS/skins/blue.css" rel="stylesheet" type="text/css" />
+        <link href="css/menuListNavCSS/skins/grey.css" rel="stylesheet" type="text/css" />
+        <link href="css/menuListNavCSS/skins/demo.css" rel="stylesheet" type="text/css" />
+        <!--The next line may need to be removed, we already hava  script talking to googleeapis 1.7 !-->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+        <script type="text/javascript" src="js/menuListNavJS/jquery.cookie.js"></script>
+        <script type="text/javascript" src="js/menuListNavJS/jquery.dcdrilldown.1.2.min.js"></script>
+        <script type="text/javascript">
+                    $(document).ready(function ($) {
+                        $('#drilldown-1').dcDrilldown({
+                            speed: 'slow',
+                            saveState: false,
+                            showCount: false,
+                            linkType: 'backlink',
+                            backText: '^ Top Menu',
+                            defaultText: '^ Top Menu'
+                        });
+                        $('#drilldown-2').dcDrilldown({
+                            speed: 'fast',
+                            saveState: false,
+                            showCount: false,
+                            linkType: 'link'
+                        });
+
+                    });
+        </script>
+
+
+        <!-- MAP -->
+        <style type="text/css">
+            html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+        </style>
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg3suBVsTjew0sCBoqHHBF2cy2UOI4dYk">
+        </script>
+
+        <script type="text/javascript">
+
+            function CenterControl(controlDiv, map) {
+
+                // Set CSS for the control border
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#ff0000';
+                controlUI.style.border = '2px solid #797980';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '22px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Click to recenter the map';
+                controlDiv.appendChild(controlUI);
+
+                // Set CSS for the control interior
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(255,255,255)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = '16px';
+                controlText.style.lineHeight = '38px';
+                controlText.style.paddingLeft = '5px';
+                controlText.style.paddingRight = '5px';
+                controlText.innerHTML = 'Recreation';
+                controlUI.appendChild(controlText);
+
+                // Setup the click event listeners: simply set the map to
+                // Chicago
+                google.maps.event.addDomListener(controlUI, 'click', function () {
+                    hartmanM.setMap(map);
+                    gothicM.setMap(map);
+                    cbmrM.setMap(map);
+                    cbArtsM.setMap(null);
+                    westernM.setMap(null);
+                    Pstop.setMap(null);
+                });
+
+            }
+            function CenterControl2(controlDiv, map) {
+
+                // Set CSS for the control border
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#ff0000';
+                controlUI.style.border = '2px solid #797980';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '22px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Click to recenter the map';
+                controlDiv.appendChild(controlUI);
+
+                // Set CSS for the control interior
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(255,255,255)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = '16px';
+                controlText.style.lineHeight = '38px';
+                controlText.style.paddingLeft = '5px';
+                controlText.style.paddingRight = '5px';
+                controlText.innerHTML = 'Culture';
+                controlUI.appendChild(controlText);
+
+                // Setup the click event listeners: simply set the map to
+                // Chicago
+                google.maps.event.addDomListener(controlUI, 'click', function () {
+                    cbArtsM.setMap(map);
+                    westernM.setMap(map);
+                    hartmanM.setMap(null);
+                    gothicM.setMap(null);
+                    cbmrM.setMap(null);
+                    Pstop.setMap(null);
+                });
+
+            }
+            function CenterControl3(controlDiv, map) {
+
+                // Set CSS for the control border
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#ff0000';
+                controlUI.style.border = '2px solid #797980';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '22px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Click to recenter the map';
+                controlDiv.appendChild(controlUI);
+
+                // Set CSS for the control interior
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(255,255,255)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = '16px';
+                controlText.style.lineHeight = '38px';
+                controlText.style.paddingLeft = '5px';
+                controlText.style.paddingRight = '5px';
+                controlText.innerHTML = 'Food';
+                controlUI.appendChild(controlText);
+
+
+                google.maps.event.addDomListener(controlUI, 'click', function () {
+                    Pstop.setMap(map);
+                    cbArtsM.setMap(null);
+                    westernM.setMap(null);
+                    hartmanM.setMap(null);
+                    gothicM.setMap(null);
+                    cbmrM.setMap(null);
+
+                });
+
+            }
+
+            var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h1 id="firstHeading" class="firstHeading">Western State Colorado University</h1>' +
+                    '<div id="bodyContent">' +
+                    '<p><img src="pic.jpg"><b>Western</b>, also referred to as <b>WSCU</b>, is a large ' +
+                    'sandstone rock formation in the southern part of the ' +
+                    'Gunnison county, central Colorado. It lies 400 miles ' +
+                    'south west of the nearest large town, Denver.; ' +
+                    ' Kata Tjuta and Uluru are the two major ' +
+                    'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
+                    'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
+                    'Aboriginal people of the area. It has many springs, waterholes, ' +
+                    'rock caves and ancient paintings. Uluru is listed as a World ' +
+                    'Heritage Site.</p>' +
+                    '<p>Attribution: Uluru, <a href="western.edu">' +
+                    'https://western.edu</a> ' +
+                    '(last visited June 22, 2009).</p>' +
+                    '</div>' +
+                    '</div>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            //gunny markers
+
+
+            var westernM = new google.maps.Marker({
+                position: new google.maps.LatLng(38.547, -106.918),
+                title: "Western",
+                icon: 'W.jpg',
+                type: 'Cul'
+            });
+            var hartmanM = new google.maps.Marker({
+                position: new google.maps.LatLng(38.505, -106.9501),
+                title: "Western",
+                icon: 'blm.jpg',
+                type: 'Rec'
+            });
+            var Pstop = new google.maps.Marker({
+                position: new google.maps.LatLng(38.547, -106.928),
+                title: "PowerStop",
+                icon: 'powerstop.jpg',
+                type: 'Food'
+            });
+            //CB markers
+            var cbmrM = new google.maps.Marker({
+                position: new google.maps.LatLng(38.9, -106.95),
+                icon: 'cbmr.jpg',
+                title: "CBMR"
+            });
+            var cbArtsM = new google.maps.Marker({
+                position: new google.maps.LatLng(38.8677, -106.9773),
+                icon: 'cbart.jpg',
+                title: "CB Art Center"
+            });
+            var gothicM = new google.maps.Marker({
+                position: new google.maps.LatLng(38.9592, -106.9898),
+                icon: 'fs.jpg',
+                title: "RMBL"
+            });
+
+            // To add the marker to the map, call setMap();
+
+            // First, create an object containing LatLng and population for each city.
+            var citymap = {};
+            citymap['gunnison'] = {
+                center: new google.maps.LatLng(38.547, -106.918),
+                population: 10000
+            };
+            citymap['cb'] = {
+                center: new google.maps.LatLng(38.8677, -106.9773),
+                population: 3000
+            };
+            var cityCircle;
+
+
+            function initialize() {
+                // Create the map.
+                var myLatlng = new google.maps.LatLng(38.547, -106.918);
+                var mapOptions = {
+                    zoom: 4,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.HYBRID
+
+                };
+
+
+                function smoothZoom(map, max, cnt) {
+                    if (cnt >= max) {
+                        return;
+                    }
+                    else {
+                        z = google.maps.event.addListener(map, 'zoom_changed', function (event) {
+                            google.maps.event.removeListener(z);
+                            smoothZoom(map, max, cnt + 1);
+
+                        });
+                        setTimeout(function () {
+                            map.setZoom(cnt);
+                        }, 300); // 80ms is what I found to work well on my system -- it might not work well on all systems
+                    }
+                }
+
+
+
+
+
+                var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                smoothZoom(map, 10, map.getZoom());
+
+                var centerControlDiv = document.createElement('div');
+                var centerControl = new CenterControl(centerControlDiv, map);
+                centerControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+
+
+                var centerControl2 = new CenterControl2(centerControlDiv, map);
+                centerControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+
+
+
+                var centerControl3 = new CenterControl3(centerControlDiv, map);
+                centerControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+                var gunnyC = {
+                    strokeColor: 'rgb(255,255,255)',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.30,
+                    map: map,
+                    center: citymap['gunnison'].center,
+                    radius: Math.sqrt(citymap['gunnison'].population) * 100
+                };
+                var cbC = {
+                    strokeColor: 'rgb(255,255,255)',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.30,
+                    map: map,
+                    center: citymap['cb'].center,
+                    radius: Math.sqrt(citymap['cb'].population) * 100
+                };
+
+
+                cityCircle1 = new google.maps.Circle(gunnyC);
+                cityCircle2 = new google.maps.Circle(cbC);
+
+                //}
+//                google.maps.event.addListener(map, 'center_changed', function () {
+//                    // 3 seconds after the center of the map has changed, pan back to the
+//                    // marker.
+//                    window.setTimeout(function () {
+//                        map.panTo(citymap['gunnison'].center);
+//                    }, 3000);
+//                });
+
+                google.maps.event.addListener(cityCircle1, 'click', function () {
+
+                    smoothZoom(map, 14, map.getZoom());
+                    map.panTo(citymap['gunnison'].center);
+
+                    westernM.setMap(map);
+                    hartmanM.setMap(map);
+                    Pstop.setMap(map);
+                    cityCircle2.setMap(map);
+                    cbmrM.setMap(null);
+                    gothicM.setMap(null);
+                    cityCircle1.setMap(null);
+                    cbArtsM.setMap(null);
+
+                });
+                google.maps.event.addListener(cityCircle2, 'click', function () {
+                    smoothZoom(map, 14, map.getZoom());
+
+                    map.panTo(citymap['cb'].center);
+                    westernM.setMap(null);
+                    hartmanM.setMap(null);
+                    Pstop.setMap(null);
+
+                    cityCircle2.setMap(null);
+                    cityCircle1.setMap(map);
+                    cbmrM.setMap(map);
+                    cbArtsM.setMap(map);
+                    gothicM.setMap(map);
+                });
+                google.maps.event.addListener(westernM, 'click', function () {
+                    infowindow.open(map, westernM);
+                });
+            }
+//close intialize
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+
+
+
+
+        <!-- Carosel !-->
+        <link href="css/carouselCSS/Carousel_bootstrapTheme.css" rel="stylesheet">
+
+        <!-- Owl Carousel Assets -->
+        <link href="css/carouselCSS/carousel.css" rel="stylesheet">
+
+        <!-- Galleria Assets -->
+        <script src="js/carouselJS/Carousel_Jquery.js"></script>
+
+        <!-- Popup Gallery Assests -->
+        <script src="js/carouselJS/Carousel_lightbox.js"></script>
+        <link href="css/carouselCSS/Carousel_lightbox.css" rel="stylesheet" />
+
+    </head>
+    <body>
+        <!--BEGIN CAROUSEL -->
+        <div class="siteWrapper">
+            <div class="col-lg-12">
+                <div id="Carousel">
+                    <div id="demo">
+                        <div class="container">
+                            <!--Add thumb carousel pictures here
+                                1. Link the full scalled images
+                                2. scr the thumb images. 160px x 160px -->
+                            <div id="owl-demo" class="owl-carousel">
+                                <a class="gallery_thumbs" href="images/carouselImgs/Full/FullHangingOutFull_small.jpg"
+                                   rel="lightbox[painting]" title="Hanging out at the Mountanieer Fieldhouse</br>2014<br>Lorem ipsum eta herben awul nolda">
+                                    <img src="images/carouselImgs/Thumb/HangingOutThumb.jpg" alt="" /></a>
+
+                                <a class="gallery_thumbs" href="images/carouselImgs/Full/McKeithFull-small.jpg"
+                                   rel="lightbox[painting]" title="Weight Lifting</br>2014<br>Lorem ipsum eta herben awul nolda">
+                                    <img src="images/carouselImgs/Thumb/McKeithThumb.jpg" alt="" /></a>
+
+                                <a class="gallery_thumbs" href="images/carouselImgs/Full/GirlLiftFull-small.jpg"
+                                   rel="lightbox[painting]" title="Weight Lifting</br>2014<br>Lorem ipsum eta herben awul nolda">
+                                    <img src="images/carouselImgs/Thumb/GirlsLiftThumb.jpg" alt="" /></a>
+
+                                <a class="gallery_thumbs" href="images/carouselImgs/Full/weights-small.jpg"
+                                   rel="lightbox[painting]" title="Weight Lifting</br>2014<br>Lorem ipsum eta herben awul nolda">
+                                    <img src="images/carouselImgs/Thumb/weightsThumb.jpg" alt="" /></a>
+
+                                <a class="gallery_thumbs" href="images/carouselImgs/Full/running-small.jpg"
+                                   rel="lightbox[painting]" title="Running</br>2014<br>Lorem ipsum eta herben awul nolda">
+                                    <img src="images/carouselImgs/Thumb/runningThumb.jpg" alt="" /></a>
+
+                                <a class="gallery_thumbs" href="images/carouselImgs/Full/Trampoline-small.jpg"
+                                   rel="lightbox[painting]" title="Weight Lifting</br>2014<br>Lorem ipsum eta herben awul nolda">
+                                    <img src="images/carouselImgs/Thumb/TrampolineThumb.jpg" alt="" /></a>
+
+                                <a class="gallery_thumbs" href="images/carouselImgs/Full/climbing-small.jpg"
+                                   rel="lightbox[painting]" title="Weight Lifting</br>2014<br>Lorem ipsum eta herben awul nolda">
+                                    <img src="images/carouselImgs/Thumb/climibingThumb.jpg" alt="" /></a>
+
+                                <a class="gallery_thumbs" href="images/carouselImgs/Full/HangingOutFull_small.jpg"
+                                   rel="lightbox[painting]" title="Hanging out at the Mountanieer Fieldhouse</br>2014<br>Lorem ipsum eta herben awul nolda">
+                                    <img src="images/carouselImgs/Thumb/HangingOutThumb.jpg" alt="" /></a>
+
+                                <a class="gallery_thumbs" href="images/carouselImgs/Full/McKeithFull-small.jpg"
+                                   rel="lightbox[painting]" title="Weight Lifting</br>2014<br>Lorem ipsum eta herben awul nolda">
+                                    <img src="images/carouselImgs/Thumb/McKeithThumb.jpg" alt="" /></a>
+
+                                <a class="gallery_thumbs" href="images/carouselImgs/Full/GirlLiftFull-small.jpg"
+                                   rel="lightbox[painting]" title="Weight Lifting</br>2014<br>Lorem ipsum eta herben awul nolda">
+                                    <img src="images/carouselImgs/Thumb/GirlsLiftThumb.jpg" alt="" /></a>
+
+                            </div>
+                        </div>
+
+                        <script src="js/carouselJS/carousel.js"></script>
+
+                        <!-- END CAROSEL-->
+
+
+                        <!-- BEGIN BACKGROUND CONTEXTUAL MENU !-->
+                        <!-- ISSUE: Content width doesn't appear to be responsive in Firefox
+                        TODO:Make arrow images change size when screen is resized-->
+                        <div class="pics">
+                            <section class="show" id="start">
+                                <a href ="#beginning">
+                                    <button class="beginButton">Begin Tour</button>
+                                </a>
+                            </section> 
+                            <section id="beginning">
+                                <img class="background_image" src="images/contextualNavImgs/1366_80_front-3.jpg" />
+                                <a href="#taylor">
+                                    <img id="connectionRight_img" class="right_arrow" src="images/contextualNavImgs/turnRight.png"
+                                         onmouseover="this.src = 'images/contextualNavImgs/turnRight_Hover.png'"
+                                         onmouseout="this.src = 'images/contextualNavImgs/turnRight.png'" alt="Turn Right"/>
+                                </a>
+                            </section>​
+                            <section id="taylor">
+                                <div class="hotspot-92 hs-wrap hs-loading">
+                                    <img src = "images/contextualNavImgs/1366_front.jpg" class = "panorama mypanorama" width = "2642" height = "375" />
+                                    <div class="hs-spot-object" data-tint-color="#e52929" data-type="spot" data-x="20" data-y="20" data-width="30" data-height="30"
+                                         data-popup-position="right" data-visible="visible" data-tooltip-width="100" data-tooltip-auto-width="true">
+                                        Check out this video on Western
+                                        <iframe width="300" height="200" src="https://www.youtube.com/embed/QaWu3cCH1bo" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="hs-spot-object" data-tint-color="#e52929" data-type="spot" data-x="70" data-y="30" data-width="15" data-height="30"
+                                         data-popup-position="bottom" data-visible="visible" data-tooltip-width="100" data-tooltip-auto-width="false">
+                                        Taylor Hall
+                                    </div>
+                                </div>
+                                <a href="#pathway">
+                                    <img class="forward_arrow" src="images/contextualNavImgs/forward_big.png"
+                                         onmouseover="this.src = 'images/contextualNavImgs/forward_big_Hover.png'"
+                                         onmouseout="this.src = 'images/contextualNavImgs/forward_big.png'" alt="Walk Forward"/>
+                                </a>
+                                <a href="#beginning">
+                                    <img class="back_left_arrow" src="images/contextualNavImgs/back_turnLeft.png"
+                                         onmouseover="this.src = 'images/contextualNavImgs/back_turnLeft_Hover.png'"
+                                         onmouseout="this.src = 'images/contextualNavImgs/back_turnLeft.png'" alt="Turn Back Left"/>
+                                </a>
+                            </section>
+                            <section id="pathway">
+                                <div class="hotspot-92 hs-wrap hs-loading">
+                                    <img src ="images/contextualNavImgs/1366_80_front-7.jpg" />
+                                    <div class="hs-spot-object" data-tint-color="#e52929" data-type="rect" data-x="70" data-y="30" data-width="8" data-height="8"
+                                         data-popup-position="left" data-visible="visible" data-tooltip-width="100" data-tooltip-auto-width="false">
+                                        Some trees
+                                    </div>
+                                </div>
+                                <a href="#hurst">
+                                    <img class="forward_arrow" src="images/contextualNavImgs/forward_big.png"
+                                         onmouseover="this.src = 'images/contextualNavImgs/forward_big_Hover.png'"
+                                         onmouseout="this.src = 'images/contextualNavImgs/forward_big.png'" alt="Walk Forward"/>
+                                </a>
+                                <a href="#taylor">
+                                    <img class="back_arrow" src="images/contextualNavImgs/back.png"
+                                         onmouseover="this.src = 'images/contextualNavImgs/back_Hover.png'"
+                                         onmouseout="this.src = 'images/contextualNavImgs/back.png'" alt="Walk Back"/>
+                                </a>
+                            </section>
+                            <section id="hurst">
+                                <div class="hotspot-92 hs-wrap hs-loading">
+                                    <img src="images/contextualNavImgs/1366_80_front-11.jpg" />
+                                    <div class="hs-spot-object" data-tint-color="#e52929" data-type="spot" data-x="50" data-y="34.66666666666667"
+                                         data-width="30" data-height="30" data-popup-position="bottom" data-visible="visible" data-tooltip-width="200" data-tooltip-auto-width="false">
+                                        This is Hurst, the building above all buildings. Check out the super cool things about it. So much Hurst. 
+                                    </div>
+                                </div>
+                                <a href="#pathway">
+                                    <img class="back_arrow" src="images/contextualNavImgs/back.png"
+                                         onmouseover="this.src = 'images/contextualNavImgs/back_Hover.png'"
+                                         onmouseout="this.src = 'images/contextualNavImgs/back.png'" alt="Walk Back"/>
+                                </a>
+                            </section>
+                            <!-- END CONTEXTUAL MENU WITH DIV !-->
+                        </div>
+
+
+
+
+
+
+                        <!-- BEGIN MENU LIST NAVIGATION !-->
+                        <!--<img src="images/menuListNavImgs/wscu.jpg" alt="" />   -->
+                        <div class="wrap">
+                            <div class="blue demo-container">
+                                <ul id ="drilldown-2">
+                                    <li ><a class="list-group-item-menu" href="#0">&nbsp; Menu</a>
+                                        <ul>
+                                            <li><a class="list-group-item" href="#"><i class="fa fa-book fa-3x"></i>&nbsp; Academics</a>
+                                                <ul>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-arrow-right fa-2x"></i>&nbsp; Majors</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-calculator"></i>&nbsp; Acounting</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-male"></i>&nbsp; Professors</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-building"></i>&nbsp; Buildings</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file"></i>&nbsp; Accounting Page</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-th"></i>&nbsp; Courses</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-gavel"></i>&nbsp; Anthropology</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-male"></i>&nbsp; Professors</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-building"></i>&nbsp; Buildings</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file"></i>&nbsp; Anthro Page</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-th"></i>&nbsp; Courses</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-paint-brush"></i>&nbsp; Art</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-male"></i>&nbsp; Professors</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-building"></i>&nbsp; Buildings</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file"></i>&nbsp; Art Page</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-th"></i>&nbsp; Courses</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-female"></i>&nbsp; Biology</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-male"></i>&nbsp; Professors</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-building"></i>&nbsp; Buildings</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file"></i>&nbsp; Biology Page</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-th"></i>&nbsp; Courses</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-building"></i>&nbsp; Business</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-male"></i>&nbsp; Professors</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-building"></i>&nbsp; Buildings</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file"></i>&nbsp; Business Page</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-th"></i>&nbsp; Courses</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-certificate"></i>&nbsp; Chemistry</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-male"></i>&nbsp; Professors</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-building"></i>&nbsp; Buildings</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file"></i>&nbsp; Chemistry Page</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-th"></i>&nbsp; Courses</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-trophy"></i>&nbsp; Comunication Arts</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-male"></i>&nbsp; Professors</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-building"></i>&nbsp; Buildings</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file"></i>&nbsp; Com Page</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-th"></i>&nbsp; Courses</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-laptop"></i>&nbsp; Computer Science</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-male"></i><label class="btn" for="modal-1">&nbsp; Professors</a></label></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-building"></i><label class="btn" for="modal-2">&nbsp; Buildings</a></label></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file"></i>&nbsp; CS Page</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-th"></i>&nbsp; Courses</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-pencil"></i>&nbsp; Creative Writing</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-male"></i>&nbsp; Professors</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-building"></i>&nbsp; Buildings</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file"></i>&nbsp; CW Page</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-th"></i>&nbsp; Courses</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-book"></i>&nbsp; Criminal Justice</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-male"></i>&nbsp; Professors</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-building"></i>&nbsp; Buildings</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file"></i>&nbsp; CJ Page</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-th"></i>&nbsp; Courses</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-graduation-cap fa-2x"></i>&nbsp; Graduate Programs</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-paint-brush"></i>&nbsp; Art</a></li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-pencil"></i>&nbsp; Crative Writing</a></li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-book"></i>&nbsp; Education</a></li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-recycle"></i>&nbsp; Environmental Management</a></li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-heartbeat"></i>&nbsp; High Altitude Exercise Physiology</a></li>
+                                                        </ul>
+                                                    </li>
+
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university fa-2x"></i>&nbsp; Extended Studies</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-clipboard"></i>&nbsp; Register</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-smile-o"></i>&nbsp; Join In!</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Access Program</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-hand-o-right"></i>&nbsp; Learn More</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-certificate"></i>&nbsp; Concurrent Enrollment Programs</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-hand-o-right"></i>&nbsp; Learn More</a></li>
+                                                                </ul>
+                                                            </li>
+
+                                                        </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-file fa-2x"></i>&nbsp; University Catalog</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-clipboard"></i>&nbsp; Past Catalogs</a></li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-clipboard"></i>&nbsp; Current Catalog</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-calendar fa-2x"></i>&nbsp; Academic Calendar</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="list-group-item" href="#"><i class="fa fa-bicycle fa-3x"></i>&nbsp; Athletics</a>
+                                                <ul>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-futbol-o fa-2x"></i>&nbsp; NCAA Sports</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-thumbs-up"></i>&nbsp; Football</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Mountaineer Bowl</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Staff</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Basketball</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Paul Wright Gym</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Staff</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Wrestling</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Paul Wright Gym</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Staff</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Track</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Indoor Facility</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Staff</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Swimming</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Swimming Pool</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Staff</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Soccer</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Soccer Field</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Staff</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-motorcycle fa-2x"></i>&nbsp; Mountain Sports</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-tree"></i>&nbsp; Ski and Snowboard</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; CBMR</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Monarch</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-bicycle"></i>&nbsp; Mountain Biking</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Hartmans Rocks</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Trails Nearby</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="list-group-item" href="#"><i class="fa fa-mars fa-3x"></i>&nbsp; Future Students</a>
+                                                <ul>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-star fa-2x"></i>&nbsp; Apply Now!!</a></li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-credit-card fa-2x"></i>&nbsp; Tuition and Fees</a>
+                                                        <ul>
+                                                            <li><a href="#" class="list-group-item"><i class="fa fa-university"></i>&nbsp; In State</a></li>
+                                                            <li><a href="#" class="list-group-item"><i class="fa fa-university"></i>&nbsp; Out of State</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university fa-2x"></i>&nbsp; Visit Campus</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Set up a Visit</a></li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Contact Us</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-smile-o fa-2x"></i>&nbsp; Activities</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Clubs and Organizations</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Academic Clubs</a>
+                                                                        <ul>
+                                                                            <li><a class="list-group-item" href="#"><i class="fa fa-bar-chart"></i>&nbsp; Math Club</a></li>
+                                                                            <li><a class="list-group-item" href="#"><i class="fa fa-code"></i>&nbsp; CS Club</a></li>
+                                                                            <li><a class="list-group-item" href="#"><i class="fa fa-flask"></i>&nbsp; Chemistry Club</a></li>
+                                                                        </ul>
+                                                                    </li>
+
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-futbol-o"></i>&nbsp; Sports Clubs</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-euro"></i>&nbsp; Cultural Clubs</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Special Interests</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-gamepad"></i>&nbsp; Recreation</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-home fa-2x"></i>&nbsp; Housing</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; On Campus</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-bed"></i>&nbsp; Escalante</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-bed"></i>&nbsp; Mears</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-bed"></i>&nbsp; Ute</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-bed"></i>&nbsp; Pinnacles</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Off Campus</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-bed"></i>&nbsp; Mountaineer Village</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-bed"></i>&nbsp; Sunshine Appts</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-road fa-2x"></i>&nbsp; Nearby</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-tree"></i>&nbsp; CBMR</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; About</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Ski Pass</a>
+                                                                        <ul>
+                                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Student Discount</a></li>
+                                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; CBMR Website</a></li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Free Shuttle</a>
+                                                                        <ul>
+                                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Shuttle Stops</a></li>
+                                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Times</a></li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-tree"></i>&nbsp; Monarch</a></li>
+                                                            <ul>
+                                                                <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; About</a></li>
+                                                                <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Ski Pass</a>
+                                                                    <ul>
+                                                                        <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Student Discount</a></li>
+                                                                        <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Monarch Website</a></li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Hartman's Rocks</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Location</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Blue Mesa</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; About</a></li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Fishing</a>
+                                                                <ul>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Ice Fishing</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Salmon Fishing</a></li>
+                                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Gunnison River</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Wanita Hot Springs</a>
+                                                        <ul>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; About</a></li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Location</a></li>
+                                                            <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Prices</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li><a class="list-group-item" href="#"><i class="fa fa-university fa-2x"></i>&nbsp; Downtown Gunnison</a>
+                                                <ul>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-crosshairs"></i>&nbsp; Gene Taylors</a></li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-spoon"></i>&nbsp; Gunnisack</a></li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-glass"></i>&nbsp; Timbers</a></li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-cutlery"></i>&nbsp; City Market</a></li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; WalMart</a></li>
+                                                    <li><a class="list-group-item" href="#"><i class="fa fa-university"></i>&nbsp; Starbucks</a></li>
+                                                </ul>
+                                            </li>
+
+
+                                        </ul>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                        <input class="modal-state" id="modal-1" type="checkbox" />
+                        <div class="modal">
+                            <label class="modal__bg" for="modal-1"></label>
+                            <div class="modal__inner">
+                                <label class="modal__close" for="modal-1"></label>
+                                <h2>Computer Science Professors</h2>
+                                <p color="white">John Peterson<br /><img src="http://www.western.edu/sites/default/files/CIS%20-%20John%20Peterson%20Profile.jpg" alt="JP"/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Daniel Schuster<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://www.western.edu/sites/default/files/people/images/facschuster.jpg" alt="JP" /></p>
+                            </div>
+                        </div>
+                        <input class="modal-state" id="modal-2" type="checkbox" />
+                        <div class="modal">
+                            <label class="modal__bg" for="modal-2"></label>
+                            <div class="modal__inner">
+                                <label class="modal__close" for="modal-2"></label>
+                                <h2>Hurst Hall</h2>
+                                <p color="white">Hurst Hall is the building for studies in majors of Science, Math and Computer Science.<br /><img src="http://www.western.edu/sites/default/files/styles/basic_page_header_image/public/media/raw/CBecker1407_0386-Hurst%20Hall-2.jpg?itok=fDJZuTw3" alt="JP" /> </p>
+                            </div>
+                        </div>
+
+                        <!-- END LIST NAVIGATION !--->
+
+
+
+
+
+                        <!-- MAP-->
+                        <div id="map-canvas" style="width:400px;height:600px;float:right;"> </div>
+                        <!-- END MAP-->
+
+                        </body>
+                        </html>
